@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="my" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABLEmanager - AI-Powered Private School Management System</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Padauk:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            500: '#16a34a',
+                            600: '#15803d',
+                            700: '#166534',
+                            800: '#14532d',
+                            900: '#134e2a',
+                        },
+                        accent: {
+                            50: '#eff6ff',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'Padauk', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', 'Padauk', sans-serif;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(229, 231, 235, 0.8);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #15803d 0%, #1d4ed8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #14532d 100%);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-brand-500 selection:text-white">
+
+    <!-- Top Navigation Header -->
+    <header class="sticky top-0 z-50 glass-card border-b border-slate-200/80 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <div class="flex items-center space-x-3">
+                <div class="w-12 h-12 bg-gradient-to-tr from-brand-600 to-emerald-400 rounded-xl flex items-center justify-center text-white font-extrabold text-2xl shadow-lg shadow-brand-500/20">
+                    A
+                </div>
+                <div>
+                    <span class="text-2xl font-bold tracking-tight text-slate-900">ABLE<span class="text-brand-600">manager</span></span>
+                    <span class="block text-xs text-slate-500 font-medium">Business Management Agency</span>
+                </div>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex items-center space-x-8 font-medium text-sm text-slate-600">
+                <a href="#overview" class="hover:text-brand-600 transition-colors">နိဒါန်း (Overview)</a>
+                <a href="#demo" class="hover:text-brand-600 transition-colors">စနစ် စမ်းသပ်ရန် (Demo)</a>
+                <a href="#modules" class="hover:text-brand-600 transition-colors">ဝန်ဆောင်မှုများ (Modules)</a>
+                <a href="#pricing" class="hover:text-brand-600 transition-colors">ဈေးနှုန်း/ROI</a>
+                <a href="#hr-guide" class="hover:text-brand-600 transition-colors">ကျောင်းစီမံမှု လမ်းညွှန်</a>
+            </nav>
+
+            <!-- Call to Action Button -->
+            <div class="hidden sm:flex items-center space-x-3">
+                <a href="https://viber.click/959699094521" target="_blank" class="inline-flex items-center px-4 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-semibold text-sm shadow-md shadow-purple-600/20 transition-all duration-200 hover:-translate-y-0.5">
+                    <i class="fa-brands fa-viber mr-2 text-lg"></i>
+                    Viber ဆက်သွယ်ရန်
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button id="mobileMenuBtn" class="md:hidden text-slate-700 hover:text-brand-600 p-2 text-xl">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Menu Dropdown -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-6 space-y-3">
+            <a href="#overview" class="block py-2 text-slate-700 font-medium border-b border-slate-100">နိဒါန်း (Overview)</a>
+            <a href="#demo" class="block py-2 text-slate-700 font-medium border-b border-slate-100">စနစ် စမ်းသပ်ရန် (Demo)</a>
+            <a href="#modules" class="block py-2 text-slate-700 font-medium border-b border-slate-100">ဝန်ဆောင်မှုများ (Modules)</a>
+            <a href="#pricing" class="block py-2 text-slate-700 font-medium border-b border-slate-100">ဈေးနှုန်း/ROI</a>
+            <a href="#hr-guide" class="block py-2 text-slate-700 font-medium border-b border-slate-100">ကျောင်းစီမံမှု လမ်းညွှန်</a>
+            <a href="https://viber.click/959699094521" target="_blank" class="w-full text-center block py-3 rounded-xl bg-purple-600 text-white font-semibold text-sm">
+                <i class="fa-brands fa-viber mr-2"></i> Viber ဆက်သွယ်ရန်
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="overview" class="relative overflow-hidden pt-12 pb-20 lg:pt-20 lg:pb-28 bg-gradient-to-b from-slate-100 via-white to-slate-50">
+        <div class="absolute top-0 right-1/4 w-96 h-96 bg-brand-500/10 rounded-full blur-3xl -z-10"></div>
+        <div class="absolute bottom-10 left-10 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl -z-10"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Hero Left Column Text -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-brand-50 border border-brand-200 text-brand-700 text-xs sm:text-sm font-semibold">
+                        <span class="flex h-2 w-2 rounded-full bg-brand-500 animate-ping"></span>
+                        <span>AI နည်းပညာသုံး ကျောင်းစီမံခန့်ခွဲမှုစနစ် အဆိုပြုလွှာ (2026)</span>
+                    </div>
+
+                    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 leading-tight">
+                        ကိုယ်ပိုင်ကျောင်း/သင်တန်း လုပ်ငန်းများကို 
+                        <span class="gradient-text block mt-1">AI ဖြင့် စနစ်တကျ စီမံခန့်ခွဲလိုက်ပါ</span>
+                    </h1>
+
+                    <p class="text-base sm:text-lg text-slate-600 font-normal leading-relaxed">
+                        ကျောင်းသား၊ ဝန်ထမ်း၊ သင်ကြားရေး၊ စာမေးပွဲနှင့် ဘဏ္ဍာရေး လုပ်ငန်းဆောင်တာ အားလုံးကို တစ်နေရာတည်းမှ ခေတ်မီ AI နည်းပညာဖြင့် မြန်ဆန်၊ မှန်ကန်၊ သက်သာစွာ စီမံခန့်ခွဲနိုင်မည့် <strong class="text-slate-900">One-Stop Digital Solution</strong>
+                    </p>
+
+                    <!-- Key Metrics Highlights Grid -->
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-2">
+                        <div class="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-sm text-center lg:text-left">
+                            <div class="text-2xl sm:text-3xl font-bold text-brand-600">80%</div>
+                            <div class="text-xs text-slate-500 mt-1 font-medium">လစဉ် အုပ်ချုပ်မှု စရိတ် သက်သာမှု</div>
+                        </div>
+                        <div class="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-sm text-center lg:text-left">
+                            <div class="text-2xl sm:text-3xl font-bold text-blue-600">5-in-1</div>
+                            <div class="text-xs text-slate-500 mt-1 font-medium">ပြည့်စုံသော Modules (၅) ခု</div>
+                        </div>
+                        <div class="col-span-2 sm:col-span-1 bg-white p-4 rounded-2xl border border-slate-200/80 shadow-sm text-center lg:text-left">
+                            <div class="text-2xl sm:text-3xl font-bold text-purple-600">FREE</div>
+                            <div class="text-xs text-slate-500 mt-1 font-medium">ကျောင်း သီးသန့် Website လက်ဆောင်</div>
+                        </div>
+                    </div>
+
+                    <!-- CTA Actions -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                        <a href="#demo" class="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-center shadow-lg shadow-brand-600/25 transition-all duration-200 hover:-translate-y-0.5">
+                            <i class="fa-solid fa-laptop-code mr-2"></i> စနစ် စမ်းသပ်ကြည့်မည်
+                        </a>
+                        <a href="#pricing" class="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-white border border-slate-300 hover:bg-slate-50 text-slate-800 font-bold text-center shadow-sm transition-all duration-200">
+                            <i class="fa-solid fa-calculator mr-2 text-slate-500"></i> ကုန်ကျစရိတ် တွက်ချက်မည်
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hero Right Column Visual Dashboard Preview Card -->
+                <div class="lg:col-span-5">
+                    <div class="relative mx-auto max-w-md lg:max-w-none">
+                        <div class="bg-slate-900 rounded-3xl p-4 shadow-2xl border border-slate-800">
+                            <!-- Window Titlebar -->
+                            <div class="flex items-center justify-between pb-3 px-2 border-b border-slate-800">
+                                <div class="flex space-x-2">
+                                    <span class="w-3 h-3 rounded-full bg-red-500 inline-block"></span>
+                                    <span class="w-3 h-3 rounded-full bg-yellow-500 inline-block"></span>
+                                    <span class="w-3 h-3 rounded-full bg-green-500 inline-block"></span>
+                                </div>
+                                <span class="text-xs font-mono text-slate-400">ablemanager.app/dashboard</span>
+                                <span class="text-xs text-emerald-400 font-semibold"><i class="fa-solid fa-circle text-[8px] mr-1"></i> Live</span>
+                            </div>
+
+                            <!-- Simulated Mini Dashboard UI -->
+                            <div class="pt-4 space-y-4 text-white">
+                                <div class="flex justify-between items-center bg-slate-800/80 p-3 rounded-xl">
+                                    <div>
+                                        <p class="text-xs text-slate-400">မင်္ဂလာပါ ကျောင်းအုပ်ကြီး</p>
+                                        <h4 class="text-sm font-bold text-white">HEIN YADANA Private School</h4>
+                                    </div>
+                                    <span class="bg-brand-500/20 text-brand-400 text-xs px-2.5 py-1 rounded-md font-medium">AI Active</span>
+                                </div>
+
+                                <!-- Key Metrics Cards -->
+                                <div class="grid grid-cols-2 gap-3">
+                                    <div class="bg-slate-800 p-3 rounded-xl border border-slate-700/50">
+                                        <span class="text-xs text-slate-400 block">စုစုပေါင်း ကျောင်းသား</span>
+                                        <span class="text-xl font-bold text-white">1,420 ဦး</span>
+                                        <span class="text-[10px] text-emerald-400 block mt-1">+12% ဒီလအတွင်း</span>
+                                    </div>
+                                    <div class="bg-slate-800 p-3 rounded-xl border border-slate-700/50">
+                                        <span class="text-xs text-slate-400 block">ဝန်ထမ်း/ဆရာမ</span>
+                                        <span class="text-xl font-bold text-white">48 ဦး</span>
+                                        <span class="text-[10px] text-blue-400 block mt-1">100% Active</span>
+                                    </div>
+                                </div>
+
+                                <!-- Fee Status Bar -->
+                                <div class="bg-slate-800 p-3.5 rounded-xl border border-slate-700/50 space-y-2">
+                                    <div class="flex justify-between text-xs">
+                                        <span class="text-slate-300">ဒီလ ကျောင်းလခ ကောက်ခံရရှိမှု</span>
+                                        <span class="text-brand-400 font-bold">19,690,000 MMK</span>
+                                    </div>
+                                    <div class="w-full bg-slate-700 rounded-full h-2">
+                                        <div class="bg-brand-500 h-2 rounded-full w-4/5"></div>
+                                    </div>
+                                    <div class="flex justify-between text-[11px] text-slate-400">
+                                        <span>ကောက်ခံပြီး: 15,660,000 MMK</span>
+                                        <span>ကျန်ငွေ: 4,030,000 MMK</span>
+                                    </div>
+                                </div>
+
+                                <!-- AI Assistant Prompt Badge -->
+                                <div class="bg-gradient-to-r from-purple-900/60 to-indigo-900/60 border border-purple-500/30 p-3 rounded-xl flex items-center justify-between">
+                                    <div class="flex items-center space-x-2">
+                                        <i class="fa-solid fa-robot text-purple-400 text-lg"></i>
+                                        <span class="text-xs text-purple-200">AI Lesson Plan & Exam Generator အဆင်သင့်ရှိသည်</span>
+                                    </div>
+                                    <span class="text-[10px] bg-purple-500 text-white px-2 py-0.5 rounded font-bold">Try</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Dashboard Demo Section -->
+    <section id="demo" class="py-16 bg-white border-y border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-brand-600 font-bold text-sm uppercase tracking-wider">Live System Simulation</span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-2">
+                    ABLEmanager Dashboard ကို တိုက်ရိုက် စမ်းသပ်ကြည့်ပါ
+                </h2>
+                <p class="text-slate-600 mt-2 text-sm sm:text-base">
+                    အသုံးပြုသူ Portal အမျိုးအစားအလိုက် စီမံခန့်ခွဲနိုင်သည့် အင်္ဂါရပ်များကို စမ်းသပ်နှိပ်ကြည့်နိုင်ပါသည်။
+                </p>
+            </div>
+
+            <!-- Demo Tabs Navigation -->
+            <div class="flex flex-wrap justify-center gap-2 mb-8" id="demoTabs">
+                <button onclick="switchTab('admin')" id="tab-admin" class="demo-tab-btn active px-5 py-2.5 rounded-xl font-bold text-sm bg-brand-600 text-white shadow-md transition-all">
+                    <i class="fa-solid fa-user-shield mr-2"></i> Admin & Staff Portal
+                </button>
+                <button onclick="switchTab('parent')" id="tab-parent" class="demo-tab-btn px-5 py-2.5 rounded-xl font-bold text-sm bg-slate-100 text-slate-700 hover:bg-slate-200 transition-all">
+                    <i class="fa-solid fa-users mr-2"></i> Student / Parent Portal
+                </button>
+                <button onclick="switchTab('ai')" id="tab-ai" class="demo-tab-btn px-5 py-2.5 rounded-xl font-bold text-sm bg-slate-100 text-slate-700 hover:bg-slate-200 transition-all">
+                    <i class="fa-solid fa-brain mr-2 text-purple-600"></i> AI Lesson & Exam Studio
+                </button>
+                <button onclick="switchTab('finance')" id="tab-finance" class="demo-tab-btn px-5 py-2.5 rounded-xl font-bold text-sm bg-slate-100 text-slate-700 hover:bg-slate-200 transition-all">
+                    <i class="fa-solid fa-receipt mr-2 text-emerald-600"></i> Fee & Accounts
+                </button>
+            </div>
+
+            <!-- Tab Content Display Frame -->
+            <div class="bg-slate-900 rounded-3xl p-6 shadow-xl border border-slate-800 max-w-5xl mx-auto min-h-[420px] text-white">
+                
+                <!-- Tab 1: Admin & Staff Portal -->
+                <div id="content-admin" class="demo-content space-y-6">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-slate-800 pb-4 gap-2">
+                        <div>
+                            <h3 class="text-xl font-bold text-white">ကျောင်းအုပ်ကြီး နှင့် စီမံခန့်ခွဲသူ Portal (Admin Dashboard)</h3>
+                            <p class="text-xs text-slate-400">ကျောင်း၏ လုပ်ငန်းဆောင်တာများအားလုံးကို ထိန်းချုပ်၊ စီမံနိုင်ခြင်း</p>
+                        </div>
+                        <span class="bg-brand-500/20 text-brand-300 border border-brand-500/30 text-xs px-3 py-1 rounded-full font-medium">
+                            <i class="fa-solid fa-lock mr-1"></i> Role: Administrator
+                        </span>
+                    </div>
+
+                    <div class="grid sm:grid-cols-3 gap-4">
+                        <div class="bg-slate-800 p-4 rounded-2xl border border-slate-700">
+                            <div class="flex items-center justify-between text-slate-400 mb-2">
+                                <span class="text-xs font-semibold">ကျောင်းသား တက်ရောက်မှု</span>
+                                <i class="fa-solid fa-calendar-check text-brand-400"></i>
+                            </div>
+                            <div class="text-2xl font-bold text-white">96.8%</div>
+                            <p class="text-[11px] text-slate-400 mt-1">ယနေ့ တက်ရောက်သူ 1,375 / 1,420 ဦး</p>
+                        </div>
+
+                        <div class="bg-slate-800 p-4 rounded-2xl border border-slate-700">
+                            <div class="flex items-center justify-between text-slate-400 mb-2">
+                                <span class="text-xs font-semibold">ဝန်ထမ်း တက်ရောက်မှု</span>
+                                <i class="fa-solid fa-id-badge text-blue-400"></i>
+                            </div>
+                            <div class="text-2xl font-bold text-white">48 / 48</div>
+                            <p class="text-[11px] text-emerald-400 mt-1">ဆရာ/မ အားလုံး ရောက်ရှိပါသည်</p>
+                        </div>
+
+                        <div class="bg-slate-800 p-4 rounded-2xl border border-slate-700">
+                            <div class="flex items-center justify-between text-slate-400 mb-2">
+                                <span class="text-xs font-semibold">လစဉ် ဝင်ငွေ စာရင်း</span>
+                                <i class="fa-solid fa-wallet text-yellow-400"></i>
+                            </div>
+                            <div class="text-2xl font-bold text-white">15.66 M MMK</div>
+                            <p class="text-[11px] text-slate-400 mt-1">ကျောင်းလခ + သင်တန်းကြေး</p>
+                        </div>
+                    </div>
+
+                    <!-- Quick Operations Tools -->
+                    <div class="bg-slate-800/60 p-4 rounded-2xl border border-slate-700/60 space-y-3">
+                        <h4 class="text-xs font-bold text-slate-300 uppercase tracking-wider">Quick Admin Actions</h4>
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                            <button class="p-3 bg-slate-700/50 hover:bg-slate-700 rounded-xl text-left border border-slate-600/50 transition">
+                                <i class="fa-solid fa-user-plus text-brand-400 mb-1 block text-lg"></i>
+                                <span class="text-xs font-semibold block text-slate-200">ကျောင်းသားသစ် စာရင်းသွင်း</span>
+                            </button>
+                            <button class="p-3 bg-slate-700/50 hover:bg-slate-700 rounded-xl text-left border border-slate-600/50 transition">
+                                <i class="fa-solid fa-bullhorn text-purple-400 mb-1 block text-lg"></i>
+                                <span class="text-xs font-semibold block text-slate-200">မိဘများထံ အကြောင်းကြားစာ</span>
+                            </button>
+                            <button class="p-3 bg-slate-700/50 hover:bg-slate-700 rounded-xl text-left border border-slate-600/50 transition">
+                                <i class="fa-solid fa-file-invoice text-emerald-400 mb-1 block text-lg"></i>
+                                <span class="text-xs font-semibold block text-slate-200">လစဉ် Executive Report</span>
+                            </button>
+                            <button class="p-3 bg-slate-700/50 hover:bg-slate-700 rounded-xl text-left border border-slate-600/50 transition">
+                                <i class="fa-solid fa-gear text-blue-400 mb-1 block text-lg"></i>
+                                <span class="text-xs font-semibold block text-slate-200">System Setup</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 2: Parent Portal -->
+                <div id="content-parent" class="demo-content hidden space-y-6">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-slate-800 pb-4 gap-2">
+                        <div>
+                            <h3 class="text-xl font-bold text-white">မိဘ / ကျောင်းသား Portal (Parent App View)</h3>
+                            <p class="text-xs text-slate-400">မိမိကလေး၏ စာမေးပွဲရလဒ်၊ ကျောင်းတက်ရောက်မှုနှင့် စာသင်ကြားရေးကို အချိန်နှင့်တစ်ပြေးညီ စစ်ဆေးခြင်း</p>
+                        </div>
+                        <span class="bg-blue-500/20 text-blue-300 border border-blue-500/30 text-xs px-3 py-1 rounded-full font-medium">
+                            <i class="fa-solid fa-mobile-screen mr-1"></i> Mobile Friendly
+                        </span>
+                    </div>
+
+                    <div class="bg-slate-800/90 p-5 rounded-2xl border border-slate-700 space-y-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 rounded-full bg-brand-500/20 text-brand-400 flex items-center justify-center font-bold text-xl border border-brand-500/30">
+                                M
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white">မောင်မင်းခန့် (Grade 10 - Section A)</h4>
+                                <p class="text-xs text-slate-400">ခွင့်ပြုမှတ်ပုံတင်အမှတ်: HY-2026-089</p>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+                            <div class="bg-slate-900/80 p-3 rounded-xl text-center">
+                                <span class="text-slate-400 text-[11px] block">တက်ရောက်မှုနှုန်း</span>
+                                <span class="text-emerald-400 font-bold text-lg">98.5%</span>
+                            </div>
+                            <div class="bg-slate-900/80 p-3 rounded-xl text-center">
+                                <span class="text-slate-400 text-[11px] block">နောက်ဆုံး စာမေးပွဲ အဆင့်</span>
+                                <span class="text-amber-400 font-bold text-lg">အဆင့် (၂)</span>
+                            </div>
+                            <div class="bg-slate-900/80 p-3 rounded-xl text-center">
+                                <span class="text-slate-400 text-[11px] block">ကျောင်းလခ အခြေအနေ</span>
+                                <span class="text-emerald-400 font-bold text-xs mt-1 block">ပေးသွင်းပြီး</span>
+                            </div>
+                            <div class="bg-slate-900/80 p-3 rounded-xl text-center">
+                                <span class="text-slate-400 text-[11px] block">AI Flipbooks</span>
+                                <span class="text-purple-400 font-bold text-lg">12 အုပ်</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 3: AI Studio -->
+                <div id="content-ai" class="demo-content hidden space-y-6">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-slate-800 pb-4 gap-2">
+                        <div>
+                            <h3 class="text-xl font-bold text-white"><i class="fa-solid fa-wand-magic-sparkles text-purple-400 mr-2"></i> AI Lesson Planning & Exam Generator</h3>
+                            <p class="text-xs text-slate-400">ဆရာ/ဆရာမများအတွက် သင်ခန်းစာ အစီအစဉ်နှင့် စာမေးပွဲမေးခွန်းများကို AI ဖြင့် စက္ကန့်ပိုင်းအတွင်း ထုတ်ယူခြင်း</p>
+                        </div>
+                    </div>
+
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <!-- Simulated Lesson Generator Input -->
+                        <div class="bg-slate-800 p-4 rounded-2xl border border-slate-700 space-y-3">
+                            <label class="text-xs font-semibold text-slate-300 block">၁။ ဘာသာရပ် နှင့် အတန်း ရွေးချယ်ပါ</label>
+                            <select class="w-full bg-slate-900 border border-slate-700 rounded-xl p-2.5 text-xs text-slate-200">
+                                <option>High School Mathematics (Grade 10)</option>
+                                <option>Physics - Motion & Force</option>
+                                <option>English Grammar & 4 Skills</option>
+                            </select>
+
+                            <label class="text-xs font-semibold text-slate-300 block">၂။ AI Lesson Goal</label>
+                            <input type="text" value="30-minute interactive lesson plan with quiz questions" class="w-full bg-slate-900 border border-slate-700 rounded-xl p-2.5 text-xs text-slate-200" readonly>
+
+                            <button onclick="simulateAIGenerate()" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-2.5 rounded-xl text-xs transition">
+                                <i class="fa-solid fa-bolt mr-1"></i> AI Lesson Plan ထုတ်ယူမည်
+                            </button>
+                        </div>
+
+                        <!-- Simulated AI Output Result -->
+                        <div class="bg-slate-950 p-4 rounded-2xl border border-slate-800 space-y-2">
+                            <div class="flex justify-between items-center text-xs text-purple-400 font-mono">
+                                <span>[AI Output Result]</span>
+                                <span class="text-emerald-400"><i class="fa-solid fa-check mr-1"></i> Ready</span>
+                            </div>
+                            <div id="aiOutputText" class="text-xs text-slate-300 font-mono space-y-2 leading-relaxed h-44 overflow-y-auto pr-2">
+                                <p class="text-emerald-300 font-bold">✔ AI Lesson Plan Generated Successfully!</p>
+                                <p><strong>Topic:</strong> Quadratic Equations & Practical Applications</p>
+                                <p><strong>Duration:</strong> 45 Mins</p>
+                                <p><strong>Outline:</strong></p>
+                                <p>1. Introduction & Real-world examples (10 mins)</p>
+                                <p>2. Formula breakdown & Step-by-step solving (20 mins)</p>
+                                <p>3. Student practice & Interactive Quiz (15 mins)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 4: Finance & Fee -->
+                <div id="content-finance" class="demo-content hidden space-y-6">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-slate-800 pb-4 gap-2">
+                        <div>
+                            <h3 class="text-xl font-bold text-white">ကျောင်းလခ နှင့် ဘဏ္ဍာရေး စီမံခန့်ခွဲမှု (Fee & Accounts)</h3>
+                            <p class="text-xs text-slate-400">ပေးရန်ကျန်ငွေ (Dues) များကို အလိုအလျောက် ခြေရာခံခြင်းနှင့် ဝန်ထမ်း လစာတွက်ချက်မှု</p>
+                        </div>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-xs text-slate-300">
+                            <thead class="bg-slate-800 text-slate-400 uppercase font-mono">
+                                <tr>
+                                    <th class="p-3">ကျောင်းသားအမည်</th>
+                                    <th class="p-3">အတန်း</th>
+                                    <th class="p-3">လစဉ်ကြေး</th>
+                                    <th class="p-3">ပေးရန်ကျန် (Dues)</th>
+                                    <th class="p-3">အခြေအနေ</th>
+                                    <th class="p-3 text-right">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-800">
+                                <tr>
+                                    <td class="p-3 font-semibold text-white">မကြည်ဖြူစင်</td>
+                                    <td class="p-3">Grade 9</td>
+                                    <td class="p-3">150,000 MMK</td>
+                                    <td class="p-3 text-emerald-400">0 MMK</td>
+                                    <td class="p-3"><span class="bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded">Paid</span></td>
+                                    <td class="p-3 text-right"><button class="text-blue-400 hover:underline">Fee Slip ထုတ်မည်</button></td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-semibold text-white">မောင်အောင်ကျော်</td>
+                                    <td class="p-3">Grade 11</td>
+                                    <td class="p-3">200,000 MMK</td>
+                                    <td class="p-3 text-amber-400">100,000 MMK</td>
+                                    <td class="p-3"><span class="bg-amber-500/20 text-amber-400 px-2 py-0.5 rounded">Pending Dues</span></td>
+                                    <td class="p-3 text-right"><button class="text-purple-400 hover:underline">Viber Reminder ပို့မည်</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Modules Section (The 5 Key ABLE Suite Modules) -->
+    <section id="modules" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brand-600 font-bold text-sm uppercase tracking-wider">All-In-One Integrated Suite</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-2">
+                    ABLEmanager ၏ အဓိက ဝန်ဆောင်မှု Module (၅) ခု
+                </h2>
+                <p class="text-slate-600 mt-3 text-base">
+                    ကျောင်းလုပ်ငန်း တစ်ခုလုံးကို ခေတ်မီနည်းပညာဖြင့် စနစ်တကျ လည်ပတ်နိုင်စေမည့် ပြည့်စုံသော စနစ်များ
+                </p>
+            </div>
+
+            <!-- Modules Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Module 1: ABLEmanager -->
+                <div class="bg-white rounded-3xl p-8 border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 relative group flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-brand-100 text-brand-700 flex items-center justify-center text-2xl font-bold mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-school"></i>
+                        </div>
+                        <div class="text-xs font-bold text-brand-600 uppercase tracking-wider">School Management</div>
+                        <h3 class="text-2xl font-bold text-slate-900 mt-1 mb-3">ABLEmanager</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                            ကျောင်းသား စာရင်းသွင်းခြင်း၊ အတန်းနှင့် ဘာသာရပ်များ စီမံခြင်း၊ AI Lesson Planning၊ Gradebook၊ ရလဒ် ထုတ်ပြန်ခြင်းနှင့် ကျောင်းလခ ကောက်ခံမှု စနစ်။
+                        </p>
+                    </div>
+                    <ul class="space-y-2 text-xs text-slate-700 border-t border-slate-100 pt-4 font-medium">
+                        <li class="flex items-center"><i class="fa-solid fa-check text-brand-600 mr-2"></i> Admin, Staff & Parent Portals</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-brand-600 mr-2"></i> AI Lesson Plan & Exam Generator</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-brand-600 mr-2"></i> Gradebook & Fee Tracking</li>
+                    </ul>
+                </div>
+
+                <!-- Module 2: ABLEsocial -->
+                <div class="bg-white rounded-3xl p-8 border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 relative group flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-blue-100 text-blue-700 flex items-center justify-center text-2xl font-bold mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-comments"></i>
+                        </div>
+                        <div class="text-xs font-bold text-blue-600 uppercase tracking-wider">Internal Communication</div>
+                        <h3 class="text-2xl font-bold text-slate-900 mt-1 mb-3">ABLEsocial</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                            ကျောင်းတွင်း ကိစ္စများ ပြင်ပသို့ မပေါက်ကြားစေဘဲ သီးသန့် Private Network တည်ဆောက်ပေးခြင်း၊ တာဝန်ခွဲဝေမှု (Shift Schedules) နှင့် အစည်းအဝေး မှတ်တမ်းများ ထိန်းသိမ်းခြင်း။
+                        </p>
+                    </div>
+                    <ul class="space-y-2 text-xs text-slate-700 border-t border-slate-100 pt-4 font-medium">
+                        <li class="flex items-center"><i class="fa-solid fa-check text-blue-600 mr-2"></i> Private Secure Network</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-blue-600 mr-2"></i> Task Management & Shift Schedules</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-blue-600 mr-2"></i> Internal Meeting Notes & File Sharing</li>
+                    </ul>
+                </div>
+
+                <!-- Module 3: ABLEstaffing -->
+                <div class="bg-white rounded-3xl p-8 border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 relative group flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-purple-100 text-purple-700 flex items-center justify-center text-2xl font-bold mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-user-gear"></i>
+                        </div>
+                        <div class="text-xs font-bold text-purple-600 uppercase tracking-wider">HR & Payroll</div>
+                        <h3 class="text-2xl font-bold text-slate-900 mt-1 mb-3">ABLEstaffing</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                            ဝန်ထမ်း ကိုယ်ရေးမှတ်တမ်းများ၊ အလုပ်ခန့် စာချုပ်များ၊ အလုပ်တက်/ဆင်း Attendance Tracking၊ ခွင့်ရက်နှင့် လစာ (Payroll) တွက်ချက်မှုများကို တိကျစွာ စီမံခြင်း။
+                        </p>
+                    </div>
+                    <ul class="space-y-2 text-xs text-slate-700 border-t border-slate-100 pt-4 font-medium">
+                        <li class="flex items-center"><i class="fa-solid fa-check text-purple-600 mr-2"></i> HR Database & Contract Management</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-purple-600 mr-2"></i> Attendance Tracking & Leave System</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-purple-600 mr-2"></i> Automated Payroll Calculation</li>
+                    </ul>
+                </div>
+
+                <!-- Module 4: ABLEmarketing -->
+                <div class="bg-white rounded-3xl p-8 border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 relative group flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-pink-100 text-pink-700 flex items-center justify-center text-2xl font-bold mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-bullhorn"></i>
+                        </div>
+                        <div class="text-xs font-bold text-pink-600 uppercase tracking-wider">Social Media Branding</div>
+                        <h3 class="text-2xl font-bold text-slate-900 mt-1 mb-3">ABLEmarketing</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                            ကျောင်း၏ Official Facebook Page ကို အပတ်စဉ် စွဲမက်ဖွယ် Graphic Design ပို့စ် (၂) ခု ပုံမှန် တင်ပေးခြင်း၊ ကျောင်းသားသစ် စုဆောင်းပွဲ (Recruitment) Campaign များ ရေးဆွဲခြင်း။
+                        </p>
+                    </div>
+                    <ul class="space-y-2 text-xs text-slate-700 border-t border-slate-100 pt-4 font-medium">
+                        <li class="flex items-center"><i class="fa-solid fa-check text-pink-600 mr-2"></i> 2 Professional Posts / Week</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-pink-600 mr-2"></i> Student Recruitment Campaigns</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-pink-600 mr-2"></i> Page Branding & Design Visuals</li>
+                    </ul>
+                </div>
+
+                <!-- Module 5: ABLEbooks -->
+                <div class="bg-white rounded-3xl p-8 border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 relative group flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center text-2xl font-bold mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-book-open-reader"></i>
+                        </div>
+                        <div class="text-xs font-bold text-amber-600 uppercase tracking-wider">Digital Library</div>
+                        <h3 class="text-2xl font-bold text-slate-900 mt-1 mb-3">ABLEbooks</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                            ကျောင်းသားများနှင့် ဆရာ/မ များအတွက် အွန်လိုင်းမှ စာအုပ်များ၊ သင်ခန်းစာများကို Flipbook ပုံစံဖြင့် လွယ်ကူစွာ ဖတ်ရှုလေ့လာနိုင်မည့် Digital Library စနစ်။
+                        </p>
+                    </div>
+                    <ul class="space-y-2 text-xs text-slate-700 border-t border-slate-100 pt-4 font-medium">
+                        <li class="flex items-center"><i class="fa-solid fa-check text-amber-600 mr-2"></i> Interactive Flipbook Reader</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-amber-600 mr-2"></i> Digital Book Management</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-amber-600 mr-2"></i> Student Access Control</li>
+                    </ul>
+                </div>
+
+                <!-- Complimentary Free Gift Card -->
+                <div class="bg-gradient-to-br from-slate-900 via-emerald-950 to-slate-900 rounded-3xl p-8 text-white shadow-xl relative overflow-hidden flex flex-col justify-between border border-emerald-500/30">
+                    <div class="absolute -right-6 -bottom-6 w-32 h-32 bg-emerald-500/20 rounded-full blur-2xl"></div>
+                    <div>
+                        <span class="bg-emerald-500 text-slate-950 text-xs font-extrabold px-3 py-1 rounded-full uppercase tracking-wider inline-block mb-4">
+                            <i class="fa-solid fa-gift mr-1"></i> Complimentary Gift
+                        </span>
+                        <h3 class="text-2xl font-bold text-white mb-2">ကျောင်းသီးသန့် Official Website လက်ဆောင်</h3>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                            အထက်ပါ Module (၅) ခုစလုံးကို ရွေးချယ် အသုံးပြုသော ကျောင်းများအတွက် မြန်မာ/အင်္ဂလိပ် နှစ်ဘာသာသုံး Official School Website (၁) ခု အခမဲ့ တည်ဆောက်ပေးပါသည်!
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
+                        <span class="text-xs text-emerald-400 font-semibold"><i class="fa-solid fa-globe mr-1"></i> Domain & Hosting Included</span>
+                        <span class="text-lg font-bold text-white">0 MMK</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Printable Reports Section -->
+    <section class="py-16 bg-white border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-5 space-y-4">
+                    <span class="text-brand-600 font-bold text-sm uppercase tracking-wider">Printable Documents</span>
+                    <h2 class="text-3xl font-extrabold text-slate-900">
+                        ပုံနှိပ်ထုတ်ယူနိုင်သော စာရွက်စာတမ်း မှတ်တမ်းများ
+                    </h2>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        ကျောင်းလုပ်ငန်းတွင် နေ့စဉ် အသုံးပြုရသော တရားဝင် စာရွက်စာတမ်းများကို စနစ်အတွင်းမှ တိုက်ရိုက် သပ်ရပ်စွာ ပုံနှိပ်ထုတ်ယူ (Print) နိုင်ပါသည်။
+                    </p>
+                    <div class="space-y-3 pt-2">
+                        <div class="flex items-center p-3 bg-slate-50 rounded-xl border border-slate-200">
+                            <i class="fa-solid fa-file-signature text-brand-600 text-xl mr-3"></i>
+                            <div>
+                                <h4 class="text-sm font-bold text-slate-800">ကျောင်းဝင်ခွင့် လက်မှတ် (Admission Letter)</h4>
+                                <p class="text-xs text-slate-500">ကျောင်းသားသစ် လက်ခံစကတည်းက စနစ်တကျ ထုတ်ပေးနိုင်ခြင်း</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center p-3 bg-slate-50 rounded-xl border border-slate-200">
+                            <i class="fa-solid fa-receipt text-blue-600 text-xl mr-3"></i>
+                            <div>
+                                <h4 class="text-sm font-bold text-slate-800">ကျောင်းလခ ဖြတ်ပိုင်း (Fee Slip)</h4>
+                                <p class="text-xs text-slate-500">မိဘများထံ ပေးအပ်ရန် တရားဝင် ငွေလက်ခံဖြတ်ပိုင်း</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center p-3 bg-slate-50 rounded-xl border border-slate-200">
+                            <i class="fa-solid fa-money-check-dollar text-purple-600 text-xl mr-3"></i>
+                            <div>
+                                <h4 class="text-sm font-bold text-slate-800">လစာ ဖြတ်ပိုင်း (Salary Slip)</h4>
+                                <p class="text-xs text-slate-500">ဆရာ/မ များနှင့် ဝန်ထမ်းများအတွက် လစဉ် လစာစာရွက်</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center p-3 bg-slate-50 rounded-xl border border-slate-200">
+                            <i class="fa-solid fa-square-poll-vertical text-amber-600 text-xl mr-3"></i>
+                            <div>
+                                <h4 class="text-sm font-bold text-slate-800">ရလဒ် ကတ်များ (Result Cards & Reports)</h4>
+                                <p class="text-xs text-slate-500">စာမေးပွဲ အမှတ်စာရင်း အစီရင်ခံစာများ</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Document Preview Container -->
+                <div class="lg:col-span-7">
+                    <div class="bg-slate-100 p-6 rounded-3xl border border-slate-300 shadow-inner">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-xs font-bold text-slate-600 uppercase">Document Preview Demo</span>
+                            <button onclick="window.print()" class="px-3 py-1.5 bg-slate-900 text-white text-xs font-semibold rounded-lg hover:bg-slate-800">
+                                <i class="fa-solid fa-print mr-1"></i> Print Demo
+                            </button>
+                        </div>
+                        
+                        <!-- Simulated Printed Fee Slip Card -->
+                        <div class="bg-white p-6 rounded-2xl shadow-md border border-slate-200 font-sans space-y-4 max-w-lg mx-auto">
+                            <div class="text-center border-b border-slate-200 pb-3">
+                                <h3 class="text-lg font-bold text-slate-900">HEIN YADANA PRIVATE SCHOOL</h3>
+                                <p class="text-[11px] text-slate-500">Official Student Fee Slip / Receipt</p>
+                            </div>
+                            <div class="grid grid-cols-2 text-xs gap-2 text-slate-700">
+                                <div><strong>Date:</strong> 25-Sep-2026</div>
+                                <div><strong>Slip No:</strong> INV-2026-HY089</div>
+                                <div><strong>Student Name:</strong> မောင်မင်းခန့်</div>
+                                <div><strong>Grade:</strong> Grade 10 (Sec-A)</div>
+                            </div>
+                            <table class="w-full text-xs text-left border-t border-b border-slate-200 py-2 my-2">
+                                <tr class="font-bold text-slate-800">
+                                    <th class="py-1">အကြောင်းအရာ</th>
+                                    <th class="py-1 text-right">ပမာဏ</th>
+                                </tr>
+                                <tr>
+                                    <td class="py-1">ကျောင်းလခ (School Fee - Sep)</td>
+                                    <td class="py-1 text-right">150,000 MMK</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-1">AI Lab & Digital Library Access</td>
+                                    <td class="py-1 text-right">20,000 MMK</td>
+                                </tr>
+                                <tr class="font-bold border-t border-slate-200 text-slate-900">
+                                    <td class="py-1.5">စုစုပေါင်း (Total Paid)</td>
+                                    <td class="py-1.5 text-right text-brand-700 font-extrabold">170,000 MMK</td>
+                                </tr>
+                            </table>
+                            <div class="flex justify-between items-end pt-4 text-[10px] text-slate-400">
+                                <div>Approved by: ABLEmanager System</div>
+                                <div>Authorized Signature: _____________</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing & Cost Savings Comparison Section -->
+    <section id="pricing" class="py-20 bg-slate-900 text-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brand-400 font-bold text-sm uppercase tracking-wider">Transparent Investment</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2">
+                    ဝန်ဆောင်ခ နှုန်းထားများနှင့် ကုန်ကျစရိတ် တွက်ချက်မှု
+                </h2>
+                <p class="text-slate-400 mt-3 text-sm sm:text-base">
+                    ရိုးရာ စီမံခန့်ခွဲမှုစရိတ်ထက် ၈၀% အထိ သက်သာချောင်ချိစေမည့် ROI Calculator
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-12 gap-8 items-start">
+                
+                <!-- Pricing Structure Left Card -->
+                <div class="lg:col-span-5 bg-slate-800/80 p-8 rounded-3xl border border-slate-700 space-y-6">
+                    <h3 class="text-2xl font-bold text-white">ဝန်ဆောင်ခ နှုန်းထားများ</h3>
+                    
+                    <div class="space-y-4">
+                        <div class="bg-slate-900 p-4 rounded-2xl border border-slate-700/60 flex justify-between items-center">
+                            <div>
+                                <span class="text-xs text-slate-400 block font-medium">စတင် ဝန်ဆောင်ခ (One-time Setup)</span>
+                                <span class="text-lg font-bold text-white">System Build & Staff Training</span>
+                            </div>
+                            <span class="text-xl font-extrabold text-brand-400">၂၅ သိန်း MMK</span>
+                        </div>
+
+                        <div class="bg-slate-900 p-4 rounded-2xl border border-slate-700/60 flex justify-between items-center">
+                            <div>
+                                <span class="text-xs text-slate-400 block font-medium">လစဉ် ဝန်ဆောင်ခ (Monthly Fee)</span>
+                                <span class="text-lg font-bold text-white">Module တစ်ခုစီအတွက်</span>
+                            </div>
+                            <span class="text-xl font-extrabold text-emerald-400">၁ သိန်း MMK</span>
+                        </div>
+                    </div>
+
+                    <div class="text-xs text-slate-400 space-y-2 border-t border-slate-700 pt-4">
+                        <p><i class="fa-solid fa-circle-info text-blue-400 mr-1"></i> ကြိုက်နှစ်သက်ရာ Module များကို သီးခြား ရွေးချယ်နိုင်ပါသည်။</p>
+                        <p><i class="fa-solid fa-file-contract text-amber-400 mr-1"></i> စာချုပ်ကာလ: အနည်းဆုံး (၁) နှစ် (၁၂ လ) ဖြစ်ပါသည်။</p>
+                    </div>
+                </div>
+
+                <!-- Interactive ROI Calculator Right Card -->
+                <div class="lg:col-span-7 bg-white text-slate-800 p-8 rounded-3xl shadow-2xl border border-slate-200 space-y-6">
+                    <div class="flex justify-between items-center border-b border-slate-200 pb-4">
+                        <h3 class="text-xl font-bold text-slate-900"><i class="fa-solid fa-calculator text-brand-600 mr-2"></i> Custom Package Calculator</h3>
+                        <span class="text-xs bg-brand-100 text-brand-700 px-3 py-1 rounded-full font-bold">Interactive</span>
+                    </div>
+
+                    <p class="text-xs text-slate-500">သင်လိုအပ်သော Module များကို အောက်တွင် အမှန်ခြစ် ရွေးချယ်ပါ -</p>
+
+                    <!-- Module Checkboxes -->
+                    <div class="space-y-3" id="calculatorModules">
+                        <label class="flex items-center justify-between p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition">
+                            <div class="flex items-center space-x-3">
+                                <input type="checkbox" checked value="100000" class="module-check w-4 h-4 text-brand-600 rounded border-slate-300 focus:ring-brand-500" onchange="calculatePricing()">
+                                <div>
+                                    <span class="text-sm font-bold text-slate-800 block">ABLEmanager (School Management & AI)</span>
+                                    <span class="text-[11px] text-slate-500">Portals, Attendance, Gradebook & AI Lesson</span>
+                                </div>
+                            </div>
+                            <span class="text-xs font-bold text-slate-700">100,000 MMK / mo</span>
+                        </label>
+
+                        <label class="flex items-center justify-between p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition">
+                            <div class="flex items-center space-x-3">
+                                <input type="checkbox" checked value="100000" class="module-check w-4 h-4 text-brand-600 rounded border-slate-300 focus:ring-brand-500" onchange="calculatePricing()">
+                                <div>
+                                    <span class="text-sm font-bold text-slate-800 block">ABLEsocial (Communication & Task)</span>
+                                    <span class="text-[11px] text-slate-500">Private School Network & Schedules</span>
+                                </div>
+                            </div>
+                            <span class="text-xs font-bold text-slate-700">100,000 MMK / mo</span>
+                        </label>
+
+                        <label class="flex items-center justify-between p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition">
+                            <div class="flex items-center space-x-3">
+                                <input type="checkbox" checked value="100000" class="module-check w-4 h-4 text-brand-600 rounded border-slate-300 focus:ring-brand-500" onchange="calculatePricing()">
+                                <div>
+                                    <span class="text-sm font-bold text-slate-800 block">ABLEstaffing (HR & Payroll Management)</span>
+                                    <span class="text-[11px] text-slate-500">Staff Records, Attendance & KPI</span>
+                                </div>
+                            </div>
+                            <span class="text-xs font-bold text-slate-700">100,000 MMK / mo</span>
+                        </label>
+
+                        <label class="flex items-center justify-between p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition">
+                            <div class="flex items-center space-x-3">
+                                <input type="checkbox" checked value="100000" class="module-check w-4 h-4 text-brand-600 rounded border-slate-300 focus:ring-brand-500" onchange="calculatePricing()">
+                                <div>
+                                    <span class="text-sm font-bold text-slate-800 block">ABLEmarketing (Social Media Branding)</span>
+                                    <span class="text-[11px] text-slate-500">2 Posts / Week & Recruitment Ads</span>
+                                </div>
+                            </div>
+                            <span class="text-xs font-bold text-slate-700">100,000 MMK / mo</span>
+                        </label>
+
+                        <label class="flex items-center justify-between p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition">
+                            <div class="flex items-center space-x-3">
+                                <input type="checkbox" checked value="100000" class="module-check w-4 h-4 text-brand-600 rounded border-slate-300 focus:ring-brand-500" onchange="calculatePricing()">
+                                <div>
+                                    <span class="text-sm font-bold text-slate-800 block">ABLEbooks (Digital Library System)</span>
+                                    <span class="text-[11px] text-slate-500">Flipbooks & E-library Access</span>
+                                </div>
+                            </div>
+                            <span class="text-xs font-bold text-slate-700">100,000 MMK / mo</span>
+                        </label>
+                    </div>
+
+                    <!-- Free Website Gift Status Badge -->
+                    <div id="websiteGiftBadge" class="bg-emerald-50 border border-emerald-200 p-3 rounded-xl flex items-center justify-between text-emerald-800 text-xs font-bold">
+                        <span><i class="fa-solid fa-gift text-emerald-600 mr-2 text-base"></i> Module (၅) ခုစလုံး ပါဝင်သဖြင့် Official School Website အခမဲ့ ရရှိမည်!</span>
+                        <span class="bg-emerald-600 text-white px-2 py-0.5 rounded text-[10px]">Unlocking Gift</span>
+                    </div>
+
+                    <!-- Comparison Summary Box -->
+                    <div class="bg-slate-900 text-white p-5 rounded-2xl space-y-3">
+                        <div class="flex justify-between items-center text-xs text-slate-400">
+                            <span>ရိုးရာနည်းလမ်း လစဉ် ကုန်ကျစရိတ် (မန်နေဂျာ/စာရွက်စရိတ်):</span>
+                            <span class="line-through text-red-400 font-mono">2,500,000 MMK</span>
+                        </div>
+                        <div class="flex justify-between items-center text-sm font-bold">
+                            <span>ABLEmanager လစဉ် ဝန်ဆောင်ခ စုစုပေါင်း:</span>
+                            <span id="calcMonthlyTotal" class="text-2xl text-emerald-400 font-extrabold">500,000 MMK</span>
+                        </div>
+                        <div class="border-t border-slate-800 pt-2 flex justify-between items-center text-xs text-brand-300 font-semibold">
+                            <span>လစဉ် သက်သာမည့် ပမာဏ (80% Cost Saved):</span>
+                            <span id="calcSavings" class="text-lg font-bold text-brand-400">2,000,000 MMK / လ</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- School Leadership & HR Strategy Guide (Pages 17-19) -->
+    <section id="hr-guide" class="py-20 bg-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brand-600 font-bold text-sm uppercase tracking-wider">Strategic HR Guide</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-2">
+                    ကိုယ်ပိုင်ကျောင်းများ ရေရှည်အောင်မြင်ရေး စီမံခန့်ခွဲမှု လမ်းညွှန်
+                </h2>
+                <p class="text-slate-600 mt-3 text-sm sm:text-base">
+                    "အဆောက်အအုံ ကောင်းမွန်ခြင်းထက် ဆရာ/ဆရာမများနှင့် ဝန်ထမ်းများ၏ အရည်အချင်း (Human Resource Quality) က ပိုပြီး အဓိကကျပါသည်"
+                </p>
+            </div>
+
+            <!-- HR Strategy Accordion Grid -->
+            <div class="grid lg:grid-cols-2 gap-6">
+                
+                <!-- Strategy 1 -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-md transition">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-10 h-10 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center font-bold text-lg shrink-0">1</div>
+                        <div class="space-y-2">
+                            <h3 class="text-lg font-bold text-slate-900">ဝန်ထမ်း ရွေးချယ်ခန့်အပ်ခြင်း (Recruitment & Onboarding)</h3>
+                            <ul class="text-xs text-slate-600 space-y-1.5 list-disc list-inside leading-relaxed">
+                                <li><strong>Job Description (JD):</strong> စာသင်ရုံသာမက ကျောင်းသားထိန်းသိမ်းခြင်း၊ မိဘနှင့် ဆက်ဆံခြင်း တာဝန်များကို တိကျစွာ ရေးသားပါ။</li>
+                                <li><strong>Teaching Test:</strong> အတန်းထဲတွင် လက်တွေ့ သင်ကြားပြသခိုင်းပြီး Interaction ရှိမရှိ စစ်ဆေးပါ။</li>
+                                <li><strong>Orientation:</strong> ကျောင်း၏ Vision၊ Values နှင့် ယဉ်ကျေးမှုကို သေချာစွာ မိတ်ဆက်ပါ။</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Strategy 2 -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-md transition">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-lg shrink-0">2</div>
+                        <div class="space-y-2">
+                            <h3 class="text-lg font-bold text-slate-900">စီမံအုပ်ချုပ်မှုနှင့် စည်းကမ်းများ (Administration & Policy)</h3>
+                            <ul class="text-xs text-slate-600 space-y-1.5 list-disc list-inside leading-relaxed">
+                                <li><strong>Staff Handbook:</strong> ခွင့်ယူခြင်း၊ လစာ၊ Code of Conduct ပါဝင်သည့် ဝန်ထမ်းလက်စွဲစာအုပ် ပြုလုပ်ထားပါ။</li>
+                                <li><strong>Contract Agreement:</strong> စာချုပ်များတွင် အလုပ်ထွက်ပါက ကြိုတင်အကြောင်းကြားရမည့် ကာလများ တိကျစွာ ထည့်ပါ။</li>
+                                <li><strong>Delegation:</strong> ပညာရေးဌာနမှူး၊ စီမံခန့်ခွဲရေးမှူးများ ခန့်အပ်ပြီး တာဝန်ခွဲဝေပေးပါ။</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Strategy 3 -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-md transition">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-10 h-10 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center font-bold text-lg shrink-0">3</div>
+                        <div class="space-y-2">
+                            <h3 class="text-lg font-bold text-slate-900">ဆရာ/မ အရည်အသွေးမြှင့်တင်ခြင်း (Professional Development)</h3>
+                            <ul class="text-xs text-slate-600 space-y-1.5 list-disc list-inside leading-relaxed">
+                                <li><strong>Pedagogy Training:</strong> Child Psychology နှင့် Active Learning သင်တန်းများ ပေးပါ။</li>
+                                <li><strong>EdTech Integration:</strong> PowerPoint, Google Classroom နှင့် AI နည်းပညာများ သင်ကြားပေးပါ။</li>
+                                <li><strong>Peer Observation:</strong> ဆရာအချင်းချင်း အတန်းဝင်ရောက် လေ့လာဆွေးနွေးစေပါ။</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Strategy 4 -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-md transition">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center font-bold text-lg shrink-0">4</div>
+                        <div class="space-y-2">
+                            <h3 class="text-lg font-bold text-slate-900">စွမ်းဆောင်ရည် အကဲဖြတ်ခြင်း (Performance Appraisal & Retention)</h3>
+                            <ul class="text-xs text-slate-600 space-y-1.5 list-disc list-inside leading-relaxed">
+                                <li><strong>KPIs:</strong> စာမေးပွဲရလဒ်နှင့် အတန်းချိန်မှန်ကန်မှုကို အမှတ်ပေး စစ်ဆေးပါ။</li>
+                                <li><strong>Feedback System:</strong> ကျောင်းသားနှင့် မိဘများထံမှ လျှို့ဝှက် Feedback ရယူပါ။</li>
+                                <li><strong>Motivation:</strong> "လ၏ အကောင်းဆုံး ဝန်ထမ်း" ဆုနှင့် နှစ်လုပ်သက် Bonus များ ပေးအပ်ပါ။</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Curricula Add-ons Banner -->
+            <div class="mt-10 bg-white p-6 rounded-3xl border border-slate-200 flex flex-wrap items-center justify-between gap-4">
+                <div class="space-y-1">
+                    <h4 class="text-sm font-bold text-slate-900">အခြားသော သင်တန်း/သင်ရိုးများ လိုအပ်ပါကလည်း ချိတ်ဆက် ရယူနိုင်ပါသည်:</h4>
+                    <p class="text-xs text-slate-500">STEM & International Curriculum | Computer ICT | Coding & Scratch | English Grammar & 4 Skills</p>
+                </div>
+                <a href="https://viber.click/959699094521" target="_blank" class="px-5 py-2.5 bg-slate-900 text-white rounded-xl text-xs font-bold hover:bg-slate-800 transition">
+                    အသေးစိတ် မေးမြန်းရန်
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Footer Section -->
+    <footer class="gradient-bg text-slate-300 pt-16 pb-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+            
+            <div class="grid md:grid-cols-12 gap-8 items-center border-b border-slate-800 pb-12">
+                <div class="md:col-span-7 space-y-3">
+                    <div class="inline-flex items-center space-x-2 text-brand-400 text-xs font-bold uppercase">
+                        <i class="fa-solid fa-address-card"></i>
+                        <span>Contact & Inquiry</span>
+                    </div>
+                    <h3 class="text-2xl sm:text-3xl font-extrabold text-white">
+                        သင့်ကျောင်းကို AI စနစ်ဖြင့် အဆင့်မြှင့်တင်ရန် ဆက်သွယ်ပါ
+                    </h3>
+                    <p class="text-xs sm:text-sm text-slate-400">
+                        ABLEmanager အကြံပေးအဖွဲ့သည် သင့်ကျောင်း၏ စနစ်တကျရှိမှုနှင့် စီမံခန့်ခွဲမှု တိုးတက်စေရေးအတွက် အမြဲမပြတ် ကူညီရန် အဆင်သင့်ရှိပါသည်။
+                    </p>
+                </div>
+
+                <!-- Contact Direct Badges -->
+                <div class="md:col-span-5 space-y-3">
+                    <div class="bg-slate-800/80 p-4 rounded-2xl border border-slate-700/80 flex items-center space-x-4">
+                        <div class="w-10 h-10 rounded-xl bg-purple-600/20 text-purple-400 flex items-center justify-center text-xl shrink-0">
+                            <i class="fa-brands fa-viber"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs text-slate-400 block font-medium">Viber Direct Contact</span>
+                            <a href="tel:09699094521" class="text-sm font-bold text-white hover:text-brand-400">09 699 09 4521</a> / 
+                            <a href="tel:09954543237" class="text-sm font-bold text-white hover:text-brand-400">09 954 54 3237</a>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-800/80 p-4 rounded-2xl border border-slate-700/80 flex items-center space-x-4">
+                        <div class="w-10 h-10 rounded-xl bg-brand-600/20 text-brand-400 flex items-center justify-center text-xl shrink-0">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs text-slate-400 block font-medium">Head Office Location</span>
+                            <span class="text-xs font-semibold text-white">Aye Thar Yar, Taunggyi, Shan State, Myanmar</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bottom Note -->
+            <div class="flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500 gap-4">
+                <div>
+                    <strong>ABLE HTUN</strong> (Founder of ABLEmanager) &copy; 2026 ABLEmanager Business Management Agency. All rights reserved.
+                </div>
+                <div class="flex space-x-4">
+                    <a href="#overview" class="hover:text-white transition">နိဒါန်း</a>
+                    <a href="#demo" class="hover:text-white transition">Demo</a>
+                    <a href="#pricing" class="hover:text-white transition">Pricing</a>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- Client-Side JavaScript Code -->
+    <script>
+        // Mobile Menu Toggle Logic
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Interactive Dashboard Tab Switcher
+        function switchTab(tabId) {
+            // Hide all content blocks
+            document.querySelectorAll('.demo-content').forEach(el => {
+                el.classList.add('hidden');
+            });
+
+            // Deactivate all tab buttons
+            document.querySelectorAll('.demo-tab-btn').forEach(btn => {
+                btn.classList.remove('bg-brand-600', 'text-white', 'shadow-md');
+                btn.classList.add('bg-slate-100', 'text-slate-700');
+            });
+
+            // Show selected content
+            const targetContent = document.getElementById(`content-${tabId}`);
+            if (targetContent) {
+                targetContent.classList.remove('hidden');
+            }
+
+            // Activate clicked tab button
+            const targetTab = document.getElementById(`tab-${tabId}`);
+            if (targetTab) {
+                targetTab.classList.remove('bg-slate-100', 'text-slate-700');
+                targetTab.classList.add('bg-brand-600', 'text-white', 'shadow-md');
+            }
+        }
+
+        // AI Lesson Simulation Logic
+        function simulateAIGenerate() {
+            const outputText = document.getElementById('aiOutputText');
+            outputText.innerHTML = `
+                <p class="text-purple-300 font-bold"><i class="fa-solid fa-spinner fa-spin mr-1"></i> Generating AI Lesson Structure...</p>
+            `;
+
+            setTimeout(() => {
+                outputText.innerHTML = `
+                    <p class="text-emerald-300 font-bold">✔ Lesson Plan & Quiz Generated!</p>
+                    <p><strong>Topic:</strong> Quadratic Equations & Graphical Solutions</p>
+                    <p><strong>Duration:</strong> 45 Mins</p>
+                    <hr class="border-slate-800 my-1">
+                    <p><strong>Quiz Question 1:</strong> Solve $x^2 - 5x + 6 = 0$.</p>
+                    <p class="text-xs text-slate-400">Options: A) x=2,3 B) x=1,6 C) x=-2,-3</p>
+                    <p class="text-emerald-400">Answer Key: A (x=2, x=3)</p>
+                `;
+            }, 800);
+        }
+
+        // Pricing & ROI Calculator Logic
+        function calculatePricing() {
+            const checkboxes = document.querySelectorAll('.module-check');
+            let selectedCount = 0;
+            let totalMonthly = 0;
+
+            checkboxes.forEach(cb => {
+                if (cb.checked) {
+                    selectedCount++;
+                    totalMonthly += parseInt(cb.value);
+                }
+            });
+
+            const formattedTotal = totalMonthly.toLocaleString();
+            const savings = 2500000 - totalMonthly;
+            const formattedSavings = savings > 0 ? savings.toLocaleString() : '0';
+
+            document.getElementById('calcMonthlyTotal').innerText = `${formattedTotal} MMK`;
+            document.getElementById('calcSavings').innerText = `${formattedSavings} MMK / လ`;
+
+            // Free Website Gift Logic (When all 5 modules are checked)
+            const giftBadge = document.getElementById('websiteGiftBadge');
+            if (selectedCount === 5) {
+                giftBadge.classList.remove('hidden');
+            } else {
+                giftBadge.classList.add('hidden');
+            }
+        }
+
+        // Initialize Pricing Calculator on Load
+        window.onload = function() {
+            calculatePricing();
+        };
+    </script>
+</body>
+</html>
